@@ -1,0 +1,5 @@
+*.db
+*.iml
+*.log
+target/
+.idea/

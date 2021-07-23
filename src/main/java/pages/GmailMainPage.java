@@ -79,7 +79,7 @@ public class GmailMainPage extends BasePage {
     }
 
     public MailCreatingPage clickOnComposeButton() {
-        composeButton.click();
+        waitAndClick(composeButton);
         return new MailCreatingPage();
     }
 
@@ -94,8 +94,7 @@ public class GmailMainPage extends BasePage {
     }
 
     public SentPage openSentMails() {
-       waits.waitElementVisibility(By.xpath(sentButtonLocator));
-       sentButton.click();
+        waitAndClick(sentButton);
         return new SentPage();
     }
 
@@ -105,13 +104,12 @@ public class GmailMainPage extends BasePage {
     }
 
     public InboxPage openInboxPage() {
-        javascriptExecutor.executeScript("arguments[0].click();", inboxButton);
+        waitAndClick(inboxButton);
         return new InboxPage();
     }
 
     public void selectAllMails() {
-
-        mainCheckbox.click();
+        waitAndClick(mainCheckbox);
     }
 
     public boolean isAllMailsAreSelected() {
@@ -145,6 +143,7 @@ public class GmailMainPage extends BasePage {
         switchToFrame(hangoutsIframe);
         String hangoutsStatus = waitAndGetText(sharedStatus);
         driver.switchTo().defaultContent();
+        driver.navigate().refresh();
         return hangoutsStatus;
     }
 

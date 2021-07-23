@@ -70,19 +70,23 @@ public class GmailTest {
 
     @Test(priority = 1,groups = {"Regression"})
     public void receiveAndCheckEmail() {
-        SentPage sentPage = gmailMainPage.openSentMails();
-        int mailsCountBeforeSendingMail = sentPage.getSentMailsCount();
-        InboxPage inboxPage = gmailMainPage.openInboxPage();
-        int inboxQuantityBeforeSendingMail = inboxPage.quantityOfMailsInInbox();
-        MailCreatingPage mailCreatingPage = gmailMainPage.clickOnComposeButton();
-        mailCreatingPage.sendEmailToYourself(mailSubjectText, mailBodyText);
-        mailCreatingPage.sendMail();
-        gmailMainPage.openSentMails();
-        Assert.assertEquals(sentPage.getSentMailsCount(),mailsCountBeforeSendingMail+1, "Quantity isn't changed after sending mail");
-        gmailMainPage.openInboxPage();
-        Assert.assertEquals(inboxPage.quantityOfMailsInInbox(),inboxQuantityBeforeSendingMail+1,"Quantity in Inbox isn't increased");
 
-        OpenedMailPage openedMailPage = inboxPage.openLastMailFromInbox();
+        int mailsCountBeforeSendingMail = gmailMainPage
+                .openSentMails()
+                .getSentMailsCount();
+        int inboxQuantityBeforeSendingMail = gmailMainPage
+                .openInboxPage()
+                .quantityOfMailsInInbox();
+        gmailMainPage
+                .clickOnComposeButton()
+                .sendEmailToYourself(mailSubjectText, mailBodyText)
+                .sendMail();
+        gmailMainPage.openSentMails();
+        Assert.assertEquals(gmailMainPage.openSentMails().getSentMailsCount(),mailsCountBeforeSendingMail+1, "Quantity isn't changed after sending mail");
+        gmailMainPage.openInboxPage();
+        Assert.assertEquals(gmailMainPage.openInboxPage().quantityOfMailsInInbox(),inboxQuantityBeforeSendingMail+1,"Quantity in Inbox isn't increased");
+
+        OpenedMailPage openedMailPage = gmailMainPage.openInboxPage().openLastMailFromInbox();
         softAssert = new SoftAssert();
         softAssert.assertEquals(mailBodyText, openedMailPage.getOpenedMailBodyText());
         softAssert.assertEquals(mailSubjectText,openedMailPage.getOpenedMailSubjectText());

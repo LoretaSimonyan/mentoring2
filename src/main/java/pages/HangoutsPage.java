@@ -36,7 +36,7 @@ public class HangoutsPage extends BasePage {
     public void signOutOfHangouts() {
         switchToFrame(userFrame);
         javascriptExecutor.executeScript("arguments[0].scrollIntoView();", signOutOfHangoutsButton);
-        signOutOfHangoutsButton.click();
+        waitAndClick(signOutOfHangoutsButton);
         logger.info("User signed out from hangouts");
         driver.switchTo().defaultContent();
     }

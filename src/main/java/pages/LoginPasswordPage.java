@@ -21,7 +21,7 @@ public class LoginPasswordPage extends BasePage {
     public GmailMainPage enterPassword(User currentUser) {
         waitAndSendKeys(passwordFiled, currentUser.getUserPassword());
         logger.info("User entered password");
-        nextButton.click();
+        waitAndClick(nextButton);
         logger.info("User navigated to Gmail page");
         return new GmailMainPage();
     }

@@ -52,17 +52,18 @@ public class MailCreatingPage extends BasePage {
     public void createNewMail(String subjectText, String bodyText) {
         waits.waitElementToBeClickableByLocator(By.xpath(sendButtonLocator));
         userProperties = new PropertiesReader();
-        sendToFiled.sendKeys(getOtherUserEmail());
-        subjectFiled.sendKeys(subjectText);
-        mailBodyFiled.sendKeys(bodyText);
+        waitAndSendKeys(sendToFiled,getOtherUserEmail());
+        waitAndSendKeys(subjectFiled,subjectText);
+        waitAndSendKeys(mailBodyFiled,bodyText);
     }
 
-    public void sendEmailToYourself(String subjectText, String bodyText) {
+    public MailCreatingPage sendEmailToYourself(String subjectText, String bodyText) {
         waits.waitElementToBeClickableByLocator(By.xpath(sendButtonLocator));
         userProperties = new PropertiesReader();
-        sendToFiled.sendKeys(userProperties.getUserEmail());
-        subjectFiled.sendKeys(subjectText);
-        mailBodyFiled.sendKeys(bodyText);
+        waitAndSendKeys(sendToFiled,userProperties.getUserEmail());
+        waitAndSendKeys(subjectFiled,subjectText);
+        waitAndSendKeys(mailBodyFiled,bodyText);
+        return this;
     }
 
     public String getTextFromMailBody() {
@@ -84,8 +85,7 @@ public class MailCreatingPage extends BasePage {
     }
 
     public void sendMail() {
-        waits.waitElementToBeClickableByLocator(By.xpath(sendButtonLocator));
-        sendButton.click();
+      waitAndClick(sendButton);
     }
 
     public boolean isDeleteButtonTextDisplayed() {

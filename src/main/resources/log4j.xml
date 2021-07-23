@@ -6,9 +6,8 @@
                 <Pattern>%d %p %c{2} [%t] %l %m%n</Pattern>
             </PatternLayout>
         </Console>
-
         <RollingFile name="File-Log"
-                     filePattern="target/logs/gmailTest-%d{yyyy-MM-dd}.log">
+                     filePattern="C:\Users\Loreta_Simonyan\Desktop\mentoring2\mentoring2\target/logs/gmailTest-%d{yyyy-MM-dd}.log">
             <PatternLayout>
                 <pattern>%d %p %c{2} [%t] %l %m%n</pattern>
             </PatternLayout>
@@ -21,7 +20,7 @@
     <Loggers>
         <Root level="trace">
             <AppenderRef ref="Console"/>
-            <AppenderRef ref="File"/>
+            <AppenderRef ref="File-Log"/>
         </Root>
     </Loggers>
 </Configuration>

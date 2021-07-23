@@ -44,10 +44,12 @@ public class User {
             this.firstName = firstName;
             return this;
         }
+
         public UserBuilder lastName(String lastName) {
             this.lastName = lastName;
             return this;
         }
+
         public UserBuilder userEmail(String userEmail) {
             this.userEmail = userEmail;
             return this;

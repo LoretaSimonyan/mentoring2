@@ -1,5 +1,6 @@
 package tests;
 
+import dataprovider.UserCreator;
 import model.User;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -27,12 +28,7 @@ public class GmailTest {
     public void login() {
         driver = DriverFactory.getDriver();
         driver.get(propertiesReader.getBaseURL());
-        currentUser =  new User.UserBuilder()
-                .userEmail(propertiesReader.getUserEmail())
-                .password(propertiesReader.getUserPassword())
-                .firstName(propertiesReader.getUserName())
-                .lastName(propertiesReader.getUserLastName())
-                .build();
+        currentUser = UserCreator.MAIN_USER();
         LoginEmailPage loginEmailPage = new LoginEmailPage();
         LoginPasswordPage loginPasswordPage = loginEmailPage.enterEmail(currentUser);
         gmailMainPage = loginPasswordPage.enterPassword(currentUser);

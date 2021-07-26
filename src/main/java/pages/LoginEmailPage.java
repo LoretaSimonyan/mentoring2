@@ -16,7 +16,7 @@ public class LoginEmailPage extends BasePage {
     @FindBy(xpath = nextButtonLocator)
     private WebElement nextButton;
 
-    Logger logger = LogManager.getRootLogger();
+
 
     public LoginPasswordPage enterEmail(User currentUser) {
         waitAndSendKeys(emailFiled, currentUser.getUserEmail());

@@ -2,10 +2,10 @@ package model;
 
 public class User {
 
-    private  String firstName;
-    private  String lastName;
-    private  String userEmail;
-    private  String userPassword;
+    private final String firstName;
+    private final String lastName;
+    private final String userEmail;
+    private final String userPassword;
 
     public User(UserBuilder builder) {
         this.firstName = builder.firstName;

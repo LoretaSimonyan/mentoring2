@@ -55,16 +55,12 @@ public class TestListeners implements ITestListener {
                 .getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(screenCapture, new File(
-                    ".//target/screenshots/"
-                            + getCurrentTimeAsString() +
+                    "./target/screenshots/"
+                            + Utils.getCurrentTimeAsString() +
                             ".png"));
         } catch (IOException e) {
             logger.error("Failed to save screenshot: " + e.getLocalizedMessage());
         }
     }
 
-    private String getCurrentTimeAsString(){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "uuuu-MM-dd_HH-mm-ss" );
-        return ZonedDateTime.now().format(formatter);
-    }
 }

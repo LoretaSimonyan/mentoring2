@@ -39,7 +39,7 @@ public class GmailTest {
         Assert.assertTrue(gmailMainPage.isInGmailPage(), "It's not Gmail main page");
     }
 
-    @Test(priority = 0,groups = {"Regression"})
+    @Test()
     public void sentEmailTest() {
         SentPage sentPage = gmailMainPage.openSentMails();
         sentMailsBeforeSendinNewMail = sentPage.getSentMailsCount();
@@ -68,7 +68,7 @@ public class GmailTest {
         Assert.assertEquals(sentMailsBeforeSendinNewMail + 1, sentMailsAfterSendingNewMail, "Sent mail isn't in Sent folder");
     }
 
-    @Test(priority = 1,groups = {"Regression"})
+    @Test()
     public void receiveAndCheckEmail() {
 
         int mailsCountBeforeSendingMail = gmailMainPage
@@ -95,7 +95,7 @@ public class GmailTest {
 
     }
 
-    @Test(priority = 1, groups = {"Regression"})
+    @Test()
     public void deleteAllSentEmails(){
         SentPage sentPage = gmailMainPage.openSentMails();
         Assert.assertNotEquals(sentPage.getSentMailsCount(),0, "Sent page is empty");
@@ -107,14 +107,14 @@ public class GmailTest {
         softAssert.assertAll();
     }
 
-    @Test(groups = {"Regression"})
+    @Test()
     public void shareStatusTest(){
         HangoutsPage hangoutsPage = gmailMainPage.switchToHangoutsFrame();
         hangoutsPage.shareYourStatus(statusText);
         Assert.assertEquals(gmailMainPage.getSharedStatus(),statusText, "Status isn't set");
     }
 
-    @Test(groups = {"Regression"})
+    @Test()
     public void signOutFromHangoutsTest(){
         HangoutsPage hangoutsPage = gmailMainPage.switchToHangoutsFrame();
         hangoutsPage.signOutOfHangouts();
@@ -122,7 +122,7 @@ public class GmailTest {
         gmailMainPage.signInHangouts();
     }
 
-    @Test(groups = {"Regression"})
+    @Test()
     public void deleteButtonTextInCreatingMailPageTest(){
         MailCreatingPage mailCreatingPage = gmailMainPage.clickOnComposeButton();
         mailCreatingPage.moveToDeleteButton();

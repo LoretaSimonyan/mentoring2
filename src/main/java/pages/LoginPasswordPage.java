@@ -10,7 +10,7 @@ public class LoginPasswordPage extends BasePage {
 
     private final String passwordLocator = "password";
     private final String nextButtonLocator = "passwordNext";
-    Logger logger = LogManager.getRootLogger();
+    Logger logger = LogManager.getLogger(LoginPasswordPage.class);
 
     @FindBy(id = nextButtonLocator)
     private WebElement nextButton;

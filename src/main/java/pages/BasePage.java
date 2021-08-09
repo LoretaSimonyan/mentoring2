@@ -1,5 +1,6 @@
 package pages;
 
+import lombok.SneakyThrows;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -53,15 +54,18 @@ public abstract class BasePage extends AbstractWebDriverEventListener {
 
     String waitAndGetText(WebElement webElement) {
         waits.waitElementVisibility(webElement);
+
         return webElement.getText();
     }
 
+    @SneakyThrows
     void sendKeys(WebElement webElement, String text) {
         waits.waitElementVisibility(webElement);
         highLightElement(webElement);
         webElement.click();
         webElement.clear();
         webElement.sendKeys(text);
+
     }
 
     WebElement findElement(By by) {

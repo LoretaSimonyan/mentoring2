@@ -125,6 +125,7 @@ public class GmailTest {
         softAssert = new SoftAssert();
         softAssert.assertTrue(mailCreatingPage.isDeleteButtonTextDisplayed(),"The text isn't displayed");
         softAssert.assertEquals(mailCreatingPage.getDeleteButtonText(),"Discard draft(Ctrl-Shift-D)");
+        softAssert.assertAll();
     }
 
     @AfterMethod

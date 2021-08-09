@@ -14,8 +14,6 @@ import org.testng.ITestResult;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class TestListeners implements ITestListener {
     private Logger logger = LogManager.getRootLogger();

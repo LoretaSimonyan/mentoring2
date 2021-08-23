@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -45,10 +46,12 @@ public class MailCreatingPage extends BasePage {
     private WebElement deleteButton;
     Actions action;
 
+    @Step
     public void clickOnSetSaveAndCloseButton() {
         saveAndCloseButton.click();
     }
 
+    @Step
     public void createNewMail(String subjectText, String bodyText) {
         waits.waitElementToBeClickableByLocator(By.xpath(sendButtonLocator));
         userProperties = new PropertiesReader();
@@ -57,6 +60,8 @@ public class MailCreatingPage extends BasePage {
         waitAndSendKeys(mailBodyFiled,bodyText);
     }
 
+
+    @Step
     public MailCreatingPage sendEmailToYourself(String subjectText, String bodyText) {
         waits.waitElementToBeClickableByLocator(By.xpath(sendButtonLocator));
         userProperties = new PropertiesReader();
@@ -66,28 +71,33 @@ public class MailCreatingPage extends BasePage {
         return this;
     }
 
+    @Step()
     public String getTextFromMailBody() {
         return waitAndGetText(mailBodyFiled);
     }
 
+    @Step()
     public String getTextFromSendToFiled() {
         return waitAndGetText(sendToText);
     }
 
+    @Step()
     public String getTextFromSubjectFiled() {
         waits.waitElementVisibility(By.xpath(mailSubjectTextLocator));
         return mailSubjectText.getText();
     }
-
+    @Step()
     public String getOtherUserEmail() {
         userProperties = new PropertiesReader();
         return userProperties.getOtherUserEmail();
     }
 
+    @Step()
     public void sendMail() {
       waitAndClick(sendButton);
     }
 
+    @Step()
     public boolean isDeleteButtonTextDisplayed() {
         try {
             waits.waitElementVisibility(deleteButtonText);
@@ -98,10 +108,12 @@ public class MailCreatingPage extends BasePage {
         return true;
     }
 
+    @Step()
     public String getDeleteButtonText() {
         return waitAndGetText(deleteButtonText);
     }
 
+    @Step()
     public void moveToDeleteButton() {
         action = new Actions(driver);
         waits.waitElementVisibility(deleteButton);

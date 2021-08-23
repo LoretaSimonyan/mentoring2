@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -19,11 +20,13 @@ public class DraftPage extends BasePage {
     private List<WebElement> allMailsSubject;
 
 
+    @Step()
     public void openLastMailFromDrafts() {
         waits.waitElementToBeClickableByLocator(By.xpath(allMailsDraftsLocator));
         allMailsInDrafts.get(0).click();
     }
 
+    @Step()
     public String getDraftPageTitle() {
         return javascriptExecutor.executeScript("return document.title;").toString();
     }

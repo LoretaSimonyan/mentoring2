@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import model.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,6 +19,7 @@ public class LoginPasswordPage extends BasePage {
     @FindBy(name = passwordLocator)
     private WebElement passwordFiled;
 
+    @Step()
     public GmailMainPage enterPassword(User currentUser) {
         waitAndSendKeys(passwordFiled, currentUser.getUserPassword());
         logger.info("User entered password");

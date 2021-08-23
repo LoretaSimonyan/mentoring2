@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
@@ -19,7 +20,7 @@ public class SentPage extends BasePage {
 
     JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
 
-
+    @Step()
     public int getSentMailsCount() {
         try {
             waits.waitElementVisibility(By.xpath(allSentMailsLocator));
@@ -29,10 +30,12 @@ public class SentPage extends BasePage {
         return allSentMails.size();
     }
 
+    @Step()
     public String getNoMailMassageText() {
         return waitAndGetText(noMailMessage);
     }
 
+    @Step()
     public String getSentMailPageTitle() {
         return javascriptExecutor.executeScript("return document.title;").toString();
     }

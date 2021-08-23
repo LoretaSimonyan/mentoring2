@@ -1,9 +1,8 @@
 package utils;
 
 
+import io.qameta.allure.Attachment;
 import org.apache.commons.io.FileUtils;
-
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
@@ -28,7 +27,7 @@ public class TestListeners implements ITestListener {
     }
 
     public void onTestFailure(ITestResult iTestResult) {
-        saveScreenshot();
+       saveFailureScreenShot();
     }
 
     public void onTestSkipped(ITestResult iTestResult) {
@@ -59,6 +58,11 @@ public class TestListeners implements ITestListener {
         } catch (IOException e) {
             logger.error("Failed to save screenshot: " + e.getLocalizedMessage());
         }
+    }
+
+    @Attachment(value = "Screenshot after test failed", type = "image/png")
+    private byte[] saveFailureScreenShot() {
+      return ((TakesScreenshot)DriverFactory.getDriver()).getScreenshotAs(OutputType.BYTES);
     }
 
 }

@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -72,46 +73,54 @@ public class GmailMainPage extends BasePage {
 
     JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
 
-
+    @Step()
     public int getDraftsQuantity() {
         waits.waitElementToBeClickableByLocator(By.xpath(draftsQuantityLocator));
         return Integer.parseInt(draftsQuantity.getText());
     }
 
+    @Step()
     public MailCreatingPage clickOnComposeButton() {
         waitAndClick(composeButton);
         return new MailCreatingPage();
     }
 
+    @Step()
     public DraftPage openDraftsPage() {
         waitAndClick(draftsButton);
         return new DraftPage();
     }
 
+    @Step()
     public boolean isInGmailPage() {
         waits.waitElementVisibility(By.xpath(gmailPageIdentifierLocator));
         return gmailPageIdentifier.isDisplayed();
     }
 
+    @Step()
     public SentPage openSentMails() {
         waitAndClick(sentButton);
         return new SentPage();
     }
 
+    @Step()
     public void signOut() {
         waitAndClick(userButton);
         waitAndClick(signOutButton);
     }
 
+    @Step()
     public InboxPage openInboxPage() {
         waitAndClick(inboxButton);
         return new InboxPage();
     }
 
+    @Step()
     public void selectAllMails() {
         waitAndClick(mainCheckbox);
     }
 
+    @Step()
     public boolean isAllMailsAreSelected() {
         waits.waitElementVisibility(By.xpath(locatorForAllMailsCheckBox));
         for (int i = 0; i < allMailsCheckBox.size(); ++i) {
@@ -123,14 +132,17 @@ public class GmailMainPage extends BasePage {
         return true;
     }
 
+    @Step()
     public void clickOnDeleteButton() {
         waitAndClick(deleteButton);
     }
 
+    @Step()
     public void clickOnMainMenu() {
         mainMenuButton.click();
     }
 
+    @Step()
     public HangoutsPage switchToHangoutsFrame() {
         switchToFrame(hangoutsIframe);
         waitAndClick(hangoutsImage);
@@ -138,7 +150,7 @@ public class GmailMainPage extends BasePage {
         return new HangoutsPage();
     }
 
-
+    @Step
     public String getSharedStatus() {
         switchToFrame(hangoutsIframe);
         String hangoutsStatus = waitAndGetText(sharedStatus);
@@ -147,6 +159,7 @@ public class GmailMainPage extends BasePage {
         return hangoutsStatus;
     }
 
+    @Step()
     public boolean checkAvailabilityOfSignInToHangouts() {
         switchToFrame(hangoutsIframe);
         waits.waitElementVisibility(signInToHangoutsButton);
@@ -155,6 +168,7 @@ public class GmailMainPage extends BasePage {
         return isDisplayed;
     }
 
+    @Step()
     public void signInHangouts() {
         switchToFrame(hangoutsIframe);
         signInToHangoutsButton.click();

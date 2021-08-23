@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
@@ -26,6 +27,7 @@ public class HangoutsPage extends BasePage {
     JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
     Logger logger =  LogManager.getRootLogger();
 
+    @Step()
     public void shareYourStatus(String status) {
         switchToFrame(userFrame);
         sendKeys(shareStatusFiled, status + Keys.ENTER);
@@ -33,6 +35,7 @@ public class HangoutsPage extends BasePage {
         driver.switchTo().defaultContent();
     }
 
+    @Step()
     public void signOutOfHangouts() {
         switchToFrame(userFrame);
         javascriptExecutor.executeScript("arguments[0].scrollIntoView();", signOutOfHangoutsButton);

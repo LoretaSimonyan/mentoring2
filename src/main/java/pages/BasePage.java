@@ -19,7 +19,7 @@ import java.util.NoSuchElementException;
 
 public abstract class BasePage extends AbstractWebDriverEventListener {
     static Waits waits;
-    static WebDriver driver;
+    public static WebDriver driver;
     JavascriptExecutor js ;
     Logger logger = LogManager.getRootLogger();
 
